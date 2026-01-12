@@ -1,83 +1,73 @@
-class Book{
-    private int ID;
-    private String title;
-    private String author;
-    private double price;
-    private boolean availability_status;
+class Room{
+    private Integer days_stayed;
+    private Double tariff;
+    private Double pantry_charge;
+    private Double wifi_charge;
+    private Double breakfast_charge;
 
-    public void set_ID(int ID)
+    Room(Integer days_stayed, Double tariff, Double pantry_charge, Double wifi_charge, Double breakfast_charge)
     {
-        this.ID= ID;
+        this.days_stayed = days_stayed;
+        this.tariff = tariff; 
+        this.pantry_charge= pantry_charge;
+        this.wifi_charge = wifi_charge; 
+        this.breakfast_charge= breakfast_charge;
     }
 
-    public void set_title(String title)
+    int get_days_stayed()
     {
-        this.title = title;
+        return days_stayed;
     }
 
-    public void set_author(String author)
+    double get_tariff()
     {
-        this.author = author;
-    }
-
-    public void set_price(double price)
-    {
-        if(price>=0)
-        this.price = price;
-        else
-        {
-            System.out.println("Invalid Price");
-        }
-    }
-
-    public void set_availability(boolean availability_status)
-    {
-        this.availability_status= availability_status;
-    }
-    //getters
-    public int get_ID()
-    {
-        return ID;
-    }
-
-    public String get_title()
-    {
-        return title;
+        return tariff;
     }
     
-    public String get_author()
+    double get_pantry_charge()
     {
-        return author;
+        return pantry_charge;
+    }
+    
+    double get_wifi_charge()
+    {
+        return wifi_charge;
     }
 
-    public double get_price()
+    double get_breakfast_charge()
     {
-        return price;
-    }
-    public Boolean get_availability_status()
-    {
-        return availability_status;
+        return breakfast_charge;
     }
 
+    double calculate_tariff()
+    {
+        int prim_days_stayed = days_stayed;
+        double prim_daily_tariff = tariff;
+        double prim_pantry_charge = pantry_charge;
+        double prim_wifi_charge = wifi_charge;
+        double prim_breakfast_charge = breakfast_charge;
 
+        return (prim_daily_tariff+prim_pantry_charge+prim_wifi_charge+prim_breakfast_charge)*prim_days_stayed;
+    }
 }
+
 
 public class q1 {
     public static void main(String[] args) {
-        Book book = new Book();
-
-        book.set_ID(123890);
-        book.set_author("Tushar A D Rao");
-        book.set_title("How to get Good at JAVA");
-        book.set_price(4500.234);
-        book.set_availability(false);
-
-        System.out.println("Book Details:");
-        System.out.println("Book ID:"+book.get_ID());
-        System.out.println("Book Author:"+book.get_author());
-        System.out.println("Book Title:"+book.get_author());
-        System.out.println("Book Price:"+book.get_price());
-        System.out.println("Book Availability:"+book.get_availability_status());
+        int days_stayed=5;
+        double daily_tariff=2000.2, pantry_charge=300.3, wifi_charge=100.2, breakfast_charge=400.2;
+        Integer days_stayed_obj = days_stayed;
+        Double daily_tariff_obj= daily_tariff;
+        Double pantry_charge_obj = pantry_charge;
+        Double wifi_charge_obj = wifi_charge;
+        Double breakfast_charge_obj = breakfast_charge;
+        Room room = new Room(days_stayed_obj, daily_tariff_obj, pantry_charge_obj, wifi_charge_obj, breakfast_charge_obj);
+        System.out.println("Customer Details: ");
+        System.out.println("Days stayed: "+room.get_days_stayed());
+        System.out.println("Daily Tariff: "+room.get_tariff());
+        System.out.println("Pantry Charge: "+room.get_pantry_charge());
+        System.out.println("Wifi charge: "+room.get_wifi_charge());
+        System.out.println("Breakfast Charge: "+room.get_breakfast_charge());
+        System.out.println("Total Bill: "+room.calculate_tariff());        
     }
-    
 }
