@@ -50,7 +50,7 @@ class Customer extends Thread {
     }
 }
 
-public class HotelManagement {
+public class lab4_q1 {
     public static void main(String[] args) {
         Hotel hotel = new Hotel(3); // hotel with 3 rooms
 
