@@ -6,5 +6,5 @@ public class Thread2 implements Runnable{
         {
             System.out.println(Thread.currentThread()+" "+i);
         }
-    }
+    } 
 }

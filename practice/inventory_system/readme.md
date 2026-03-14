@@ -45,3 +45,5 @@ AN interface just declares methods that classes that implement the interface (us
 in the interface definition is static and final. 
 The other use case is that you can have a class implement any number of interfaces. A class can also inherit from another class and implement
 others at the same time. This simulates the effect of multiple inheritance (although multiple inheritance itself is not a feature of Java by design).
+
+Note: A concrete class cannot have a single abstract method

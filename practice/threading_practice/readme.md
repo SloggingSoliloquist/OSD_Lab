@@ -50,3 +50,39 @@ and implement your own. That is the second way of creating threads.
 So which one to pick? 
 If you want to extend the Thread class, you cannot extend any other class in addition, cos that would be multiple inheritance which JAVA Does not support. 
 Instead you can have the class implement Runnable alongside any other classes to implement or inherit from. So the Runnable interface really is the superior way in most cases.  
+
+
+Synchronization: 
+If you have some shared resource (an object of some class really) that you need threads to access one by one and not together, you can 
+synchronize any critical sections of code in the shared resource. 
+general syntax is 
+synchronized(any object)
+{
+
+}
+
+The object serves as a lock. 
+If multiple synchronized blocks share the exact same lock, then at any given time, only one thread is executing one of all the synchronized
+blocks. eg. if both by push() and pop() functions have their entire contents synchronized(this) then at any given time, push() and pop()
+are NOT happening together. 
+If they were given different locks, then it is possible that a thread acquires a lock on push() and at the same time another thread acquires
+a lock (a different lock) on pop(), so push() and pop() happen at the same time by different threads. 
+
+synchronized public void method()
+{
+
+}
+is translated by the compiler to 
+public void method()
+{
+    synchronized(this)
+    {
+
+    }
+}
+
+So by default all the methods that are synchronized share the same lock, so at any point in time, only one of them is being executed. 
+
+Thread Safety is the proper design of shared resources to prevent the shared resource from entering an undefined or inconsistent state through
+concurrent access by multiple threads. 
+
