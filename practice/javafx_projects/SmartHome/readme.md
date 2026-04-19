@@ -1,0 +1,1 @@
+A simple UI that takes a device name, a room type and adds it to a list
