@@ -20,7 +20,7 @@ public class GymManagement extends Application{
         reg_grid.setVgap(20);
         reg_grid.setPadding(new Insets(25));
         reg_grid.add(new Label("Enter ID: "),0,0);
-        TextField id_input = new TextField();
+        TextField id_input = new TextField();   
         id_input.setPromptText("Enter ID");
         reg_grid.add(id_input, 0,1);
         reg_grid.add(new Label("Enter name: "), 1,0);
@@ -89,9 +89,16 @@ public class GymManagement extends Application{
             }
             );
         }
+
     );
         table.setItems(filter);
-        HBox hb= new HBox(search_bar, table);
+        Button delete_button= new Button("delete selected entry");
+        delete_button.setOnAction(e->{
+            //get selected table entry 
+            Member selected = table.getSelectionModel().getSelectedItem();
+            members.remove(selected);
+        });
+        HBox hb= new HBox(search_bar, table, delete_button);
         display_tab.setContent(hb);
         tabs.getTabs().add(display_tab); 
         Scene scene = new Scene(tabs,800,800);
